@@ -50,7 +50,7 @@ class Blogs(BaseModel):
     Keywords: str = Field(..., title="SEO Keywords", max_length=100)
     Slug : Optional[str] = Field(None,title = 'Shown the blogs', max_length=100)
 
-@app.post("/Create a blog")
+@Blog_create.post("/Create a blog")
 async def create_blog(blog: Blogs):
     try:
         # Convert Pydantic model to dict
