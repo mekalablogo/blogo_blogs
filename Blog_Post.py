@@ -25,7 +25,7 @@ except ConnectionFailure as e:
     print(f"Connection failed: {e}")
 
 
-app = FastAPI()
+Blog_create = FastAPI()
 
 def current_utc_time():
     india_timezone = pytz.timezone('Asia/Kolkata')
@@ -50,7 +50,7 @@ class Blogs(BaseModel):
     Keywords: str = Field(..., title="SEO Keywords", max_length=100)
     Slug : Optional[str] = Field(None,title = 'Shown the blogs', max_length=100)
 
-@app.post("/create a blog")
+@app.post("/Create a blog")
 async def create_blog(blog: Blogs):
     try:
         # Convert Pydantic model to dict
