@@ -1,7 +1,7 @@
 services:
   # A Docker web service
   - type: web
-    name: Blog_Post
+    name: Blogs_Service
     runtime: python
     plan: free
     autoDeploy: false
