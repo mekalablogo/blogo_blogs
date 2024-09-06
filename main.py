@@ -9,3 +9,8 @@ app = FastAPI()
 app.mount("/Create a blog", Blog_create)
 app.mount("/GetDetail", Blog_detail)
 app.mount("/Blogs/{slug}", Slug_detail)
+
+
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the Blog API"}
