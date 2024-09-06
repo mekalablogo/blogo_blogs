@@ -29,14 +29,14 @@ class BlogDetails(BaseModel):
     MetaTitle: str
     Slug: str
 
-app = FastAPI()
+Slug_detail = FastAPI()
 
 def parse_datetime(date_str: str) -> datetime:
     # Adjust this format according to your MongoDB date format
     return datetime.strptime(date_str, '%d-%m-%Y %H-%M-%S')
 
 # Get blog details by slug
-@app.get("/blogs/{slug}", response_model=BlogDetails)
+@app.get("/Blogs/{slug}", response_model=BlogDetails)
 def get_blog_details(slug: str):
     blog = collection.find_one({"Slug": slug})
 
