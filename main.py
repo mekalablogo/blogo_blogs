@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from Blogo_create import Blog_create
+from Blogo_Post import Blog_create
 from Get_detail import Blog_detail
 from Slug_based import Slug_detail
 
