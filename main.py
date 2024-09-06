@@ -7,5 +7,5 @@ app = FastAPI()
 
 # Include the other applications
 app.mount("/Create a blog", Blog_create)
-app.mount("GetDetail", Blog_detail)
+app.mount("/GetDetail", Blog_detail)
 app.mount("/Blogs/{slug}", Slug_detail)
