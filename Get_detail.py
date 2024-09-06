@@ -32,7 +32,7 @@ def parse_datetime(date_str: str) -> datetime:
 
 
 # 1. List of Blogs (Title, thumbnail image, datetime, slug, category)
-@app.get("/GetDetail", response_model=List[BlogSummary])
+@Blog_detail.get("/GetDetail", response_model=List[BlogSummary])
 def list_blogs():
     try:
         blogs_cursor = collection.find({}, {"_id": 0, "Title": 1, "Image": 1, "DateTime": 1, "Slug": 1, "Category": 1})
