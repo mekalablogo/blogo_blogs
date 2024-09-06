@@ -5,17 +5,10 @@ from Slug_based import Slug_detail
 
 app = FastAPI()
 
-# Mount the individual applications with prefixes
-app.mount("/blog/create", Blog_create)
-app.mount("/blog/details", Blog_detail)
-app.mount("/blog", Slug_detail)
-
+app.include_router(Blog_create, prefix="/blog/create")
+app.include_router(Blog_detail, prefix="/blog/details")
+app.include_router(Slug_detail, prefix="/blog")
 
 @app.get("/")
 def read_root():
     return {"message": "Welcome to the Blog API"}
-
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
