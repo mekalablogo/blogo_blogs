@@ -1,17 +1,24 @@
 services:
-  # A Docker web service
   - type: web
     name: Blogs_Service
     runtime: python
     plan: free
     autoDeploy: false
-    buildCommand: |
-      pip install -r requirements.txt
-    startCommand: |
-      uvicorn main:app --host 0.0.0.0 --port $PORT
-    environment:
-      - PORT=8000
-      - CONNECTION_STRING="mongodb://blogomongodb1:Upr1bTQYpyhMqN9W9xLvb2U5ZGKzdgt7EqgN9aqmrUnBQgmccmRYZPYVgev7Sq68Oy9QOP4eeWANACDbhJXghw==@blogomongodb1.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@blogomongodb1@"
-      - DATABASE_NAME="Blogodb1"
-      - COLLECTION_NAME="Blogocl1"
-    # Optionally, you can add volume mounts or other configurations as needed
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: "8000"
+      - key: CONNECTION_STRING
+        value: "mongodb://blogomongodb1:Upr1bTQYpyhMqN9W9xLvb2U5ZGKzdgt7EqgN9aqmrUnBQgmccmRYZPYVgev7Sq68Oy9QOP4eeWANACDbhJXghw==@blogomongodb1.mongo.cosmos.azure.com:10255/?ssl=true&retrywrites=false&replicaSet=globaldb&maxIdleTimeMS=120000&appName=@blogomongodb1@"
+      - key: DATABASE_NAME
+        value: "Blogodb1"
+      - key: COLLECTION_NAME
+        value: "Blogocl1"
+
+    # Optional settings (e.g., disk, regions, health checks, etc.)
+    regions:
+      - oregon
+    
+    # Optionally, you can specify health check settings
+    healthCheckPath: /
